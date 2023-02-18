@@ -10,13 +10,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // final dataKey = new GlobalKey();
+
   SqlDb sqlDb = SqlDb();
 
   List nameList = [];
   List noteList = [];
   List idList = [];
   var nameController = TextEditingController();
-
   var noteController = TextEditingController();
   @override
   void initState() {
@@ -80,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             flex: 2,
             child: ListView.builder(
+              reverse: true,
               itemBuilder: (context, index) {
                 return noteItem(
                     name: nameList[index],
@@ -93,6 +95,11 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
+      // Todo
+      // bottomNavigationBar: new ElevatedButton(
+      //   onPressed: () => Scrollable.ensureVisible(dataKey.currentContext!),
+      //   child: new Text("Scroll to data"),
+      // ),
     );
   }
 }
