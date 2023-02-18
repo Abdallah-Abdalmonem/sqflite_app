@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:sqlite_flutter/screens/person_list.dart';
+import 'package:sqlite_flutter/view/screens/home_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: PersonList(),
+      home: HomeScreen(),
     );
   }
 }
