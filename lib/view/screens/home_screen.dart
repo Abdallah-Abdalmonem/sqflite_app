@@ -43,8 +43,20 @@ class _HomeScreenState extends State<HomeScreen> {
     return;
   }
 
+  ScrollController _scrollController = ScrollController();
+
+  _scrollToBottom() {
+    _scrollController.animateTo(
+      curve: Curves.easeOut,
+      _scrollController.position.maxScrollExtent,
+      duration: Duration(seconds: 1),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+
     return Scaffold(
       appBar: AppBar(),
       body: Column(
@@ -81,6 +93,8 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             flex: 2,
             child: ListView.builder(
+              controller: _scrollController,
+              physics: BouncingScrollPhysics(),
               reverse: true,
               itemBuilder: (context, index) {
                 return noteItem(
